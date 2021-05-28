@@ -37,7 +37,7 @@ curl -G 'https://api.coolapk.com/v6/main/init'
 <details>
 <summary>查看响应示例：</summary>
 
-```
+<pre><blockcode>
 {
     "data": [
         {
@@ -708,7 +708,7 @@ curl -G 'https://api.coolapk.com/v6/main/init'
         }
     ]
 }
-```
+</blockcode></pre>
 
 </details>
 
