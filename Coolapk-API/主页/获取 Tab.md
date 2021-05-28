@@ -4,12 +4,6 @@ permalink: /Coolapk-API/主页/获取Tab.html
 
 # 获取 Tab 内容
 
----
-- [获取 Tab 内容](#获取-tab-内容)
-  - [JSON 回复](#json-回复)
-  - [示例](#示例)
----
-
 *请求方式：POST*
 
 认证方式：Cookie
