@@ -5,6 +5,17 @@ permalink: /Coolapk-API/HTTP首部/HTTP首部.html
 
 > **HTTP header**（HTTP 首部，HTTP 头）表示在 HTTP 请求或响应中的用来传递附加信息的字段，修改所传递的消息（或者消息主体）的语义，或者使其更加精确。消息首部不区分大小写，开始于一行的开头，后面紧跟着一个 `':'` 和与之相关的值。字段值在一个换行符（CRLF）前或者整个消息的末尾结束。
 
+---
+- [HTTP 首部](#http-首部)
+  - [Client](#client)
+    - [User-Agent](#user-agent)
+  - [Cookie](#cookie)
+  - [Miscellaneous](#miscellaneous)
+    - [将要用到的函数](#将要用到的函数)
+    - [X-App-Token](#x-app-token)
+    - [X-App-Device](#x-app-device)
+---
+
 ## Client
 
 | 参数名 | 内容 | 必要性 | 备注 |
