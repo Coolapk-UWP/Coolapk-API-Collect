@@ -9,7 +9,7 @@ permalink: /Coolapk-API/HTTP首部/HTTP首部.html
 
 | 参数名 | 内容 | 必要性 | 备注 |
 | - | - | - | - |
-| User-Agent | UA | 非必要 | - [User-Agent](#User-Agent) |
+| User-Agent | UA | 非必要 | 若不设置可能会有错误 |
 | X-Requested-With | HTTP请求 | 必要 | `XMLHttpRequest`：返回Json<br>`com.coolapk.market`：返回HTML |
 
 ### User-Agent
@@ -35,6 +35,26 @@ Dalvik/2.1.0 (Windows NT 10.0; Win64; x64; WebView/3.0) (#Build; HUAWEI; WRT-WX9
 | uid | 用户UID | 必要 |  |
 | SESSID | SESSID | 必要 |  |
 
+获取方法(C#)：
+
+```
+private static IEnumerable<(string name, string value)> GetCoolapkCookies(Uri uri)
+        {
+            using (var filter = new Windows.Web.Http.Filters.HttpBaseProtocolFilter())
+            {
+                var cookieManager = filter.CookieManager;
+                foreach (var item in cookieManager.GetCookies(Uri("https://" + uri.Host)))
+                {
+                    if (item.Name == "uid" ||
+                        item.Name == "username" ||
+                        item.Name == "token")
+                    {
+                        yield return (item.Name, item.Value);
+                    }
+                }
+            }
+        }
+```
 
 ## Miscellaneous
 
@@ -43,14 +63,62 @@ Dalvik/2.1.0 (Windows NT 10.0; Win64; x64; WebView/3.0) (#Build; HUAWEI; WRT-WX9
 | X-Sdk-Locale | 区域 | 未知 | 如`zh-cn` |
 | X-Api-Version | API 版本 | 必要 | `[6-11]` V5没有此项 |
 | X-App-Token | Token | 必要 | [CoolapkTokenCrack](https://github.com/ZCKun/CoolapkTokenCrack "CoolapkTokenCrack") |
-| X-App-Version | App 版本 | 必要 | 酷安版本号 |
+| X-App-Version | App 版本 | 必要 | 酷安版本号 如`11.2` |
 | X-App-Id | App ID | 必要 | `com.coolapk.market` |
-| X-App-Code | App 版本代号 | 必要 | 酷安APP 版本代号 |
-| X-Sdk-Int | SDK 版本 | 必要 | Android SDK 版本号 |
-| X-App-Device | 设备号 | 非必要 | 现有算法似乎已经被封了 |
+| X-App-Code | App 版本代号 | 必要 | 酷安APP 版本代号 如`2105201` |
+| X-Sdk-Int | SDK 版本 | 必要 | Android SDK 版本号 如`30` |
+| X-App-Device | 设备号 | 非必要 | MD5 但是算法似乎已经被封了 |
 | X-Dark-Mode | 是否为夜间模式 | 非必要 | `0`：是</br>`1`：否 |
 | X-App-Channel | 未知 | 非必要 | `coolapk` |
 | X-App-Mode | 未知 | 非必要 | `universal` |
+
+### 将要用到的函数
+
+GetMD5(C#)：
+
+```
+static string GetMD5(string input)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var r1 = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var r2 = BitConverter.ToString(r1).ToLowerInvariant();
+                return r2.Replace("-", "");
+            }
+        }
+```
+
+### X-App-Token
+
+生成方法(C#)：
+
+```
+static string GetCoolapkAppToken()
+        {
+            var t = Utils.ConvertDateTimeToUnixTimeStamp(DateTime.Now);
+            var hex_t = "0x" + Convert.ToString((int)t, 16);
+            // 时间戳加密
+            var md5_t = Utils.GetMD5($"{t}");
+            var a = $"token://com.coolapk.market/c67ef5943784d09750dcfbb31020f0ab?{md5_t}${guid}&com.coolapk.market";
+            var md5_a = Utils.GetMD5(Convert.ToBase64String(Encoding.UTF8.GetBytes(a)));
+            var token = md5_a + guid + hex_t;
+            return token;
+        }
+```
+
+### X-App-Device
+
+生成方法(C#)：
+
+```
+static string GetCoolapkAppDevice()
+        {
+            string guid = Guid.NewGuid().ToString();
+            return Utils.GetMD5(guid);
+        }
+```
+
+***目前通过此算法生成的设备号可能已经被封禁了，所有使用此设备号发送的动态都会被强制进行人工审核***
 
 ---
 
