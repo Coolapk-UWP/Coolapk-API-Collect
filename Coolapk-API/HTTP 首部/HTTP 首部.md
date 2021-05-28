@@ -1,5 +1,5 @@
 ---
-permalink: /Coolapk-API/HTTP 首部/HTTP 首部.html
+permalink: /Coolapk-API/HTTP首部/HTTP首部.html
 ---
 # HTTP 首部
 
@@ -74,4 +74,4 @@ Connection: Keep-Alive
 Cache-Control: no-cache
 ```
 
-[返回主页](../../ "返回主页")
+[返回主页](https://wherewhere.github.io/Coolapk-API-Collect/ "返回主页")

@@ -10,6 +10,7 @@
   - [目录](#目录)
   - [声明](#声明)
   - [内容](#内容)
+
 ## 声明
 
 1. 本项目遵守CC-BY-4.0协议，如需转载请标明作者ID
@@ -20,4 +21,6 @@
 
 ## 内容
 - HTTP 首部
-  - [HTTP 首部](Coolapk-API/HTTP%20首部/HTTP%20首部.html "HTTP 首部")
+  - [HTTP 首部](https://wherewhere.github.io/Coolapk-API-Collect/Coolapk-API/HTTP首部/HTTP首部.html "HTTP 首部")
+- 主页
+  - [获取 Tab](https://wherewhere.github.io/Coolapk-API-Collect/Coolapk-API/主页/获取Tab.html "获取 Tab")
