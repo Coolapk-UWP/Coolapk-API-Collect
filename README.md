@@ -20,8 +20,8 @@
 5. 本项目为开源项目，不接受任何的催单和索取行为
 
 ## 内容
-- HTTP 首部
-  - [HTTP 首部](Coolapk-API/HTTP%20首部/HTTP%20首部.md "HTTP 首部")
+- 授权
+  - [HTTP 首部](Coolapk-API/授权/HTTP%20首部.md "HTTP 首部")
 - 主页
   - [Tab 内容](Coolapk-API/主页/Tab%20内容.md "Tab 内容")
 
