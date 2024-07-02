@@ -1,0 +1,59 @@
+name: Bug report
+description: Create a report to help us improve
+title: "Bug title"
+labels: [bug]
+body:
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Describe the bug
+      description: Please enter a short, clear description of the bug.
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Steps to reproduce the bug
+      description: Please provide any required setup and steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: Please provide a description of what you expected to happen
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots here to help explain your problem
+  - type: dropdown
+    validations:
+      required: true
+    attributes:
+      label: Browser
+      description: Which browser did you see the issue on?
+      options:
+        - "Edge - Edge HTML"
+        - "Chrome - Chromium"
+        - "Firefox - Gecko"
+        - "Safari - Webkit"
+        - "Opera - Presto"
+        - "Internet Explorer - Trident"
+        - "Others"
+  - type: dropdown
+    validations:
+      required: true
+    attributes:
+      label: Platform
+      description: Which platform did you see the issue on?
+      options:
+        - "Windows"
+        - "Android"
+        - "iOS"
+        - "Linux"
+        - "MacOS"
+        - "Others"
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Enter any other applicable info here
