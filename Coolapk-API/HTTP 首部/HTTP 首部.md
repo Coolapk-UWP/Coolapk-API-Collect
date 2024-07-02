@@ -1,6 +1,3 @@
----
-permalink: /Coolapk-API/HTTP首部/HTTP首部.html
----
 # HTTP 首部
 
 > **HTTP header**（HTTP 首部，HTTP 头）表示在 HTTP 请求或响应中的用来传递附加信息的字段，修改所传递的消息（或者消息主体）的语义，或者使其更加精确。消息首部不区分大小写，开始于一行的开头，后面紧跟着一个 `':'` 和与之相关的值。字段值在一个换行符（CRLF）前或者整个消息的末尾结束。
@@ -36,23 +33,23 @@ Dalvik/2.1.0 (Windows NT 10.0; Win64; x64; WebView/3.0) (#Build; HUAWEI; WRT-WX9
 
 获取方法(C#)：
 
-```
+```csharp
 private static IEnumerable<(string name, string value)> GetCoolapkCookies(Uri uri)
+{
+    using (var filter = new Windows.Web.Http.Filters.HttpBaseProtocolFilter())
+    {
+        var cookieManager = filter.CookieManager;
+        foreach (var item in cookieManager.GetCookies(Uri("https://" + uri.Host)))
         {
-            using (var filter = new Windows.Web.Http.Filters.HttpBaseProtocolFilter())
+            if (item.Name == "uid" ||
+                item.Name == "username" ||
+                item.Name == "token")
             {
-                var cookieManager = filter.CookieManager;
-                foreach (var item in cookieManager.GetCookies(Uri("https://" + uri.Host)))
-                {
-                    if (item.Name == "uid" ||
-                        item.Name == "username" ||
-                        item.Name == "token")
-                    {
-                        yield return (item.Name, item.Value);
-                    }
-                }
+                yield return (item.Name, item.Value);
             }
         }
+    }
+}
 ```
 
 ## Miscellaneous
@@ -75,46 +72,46 @@ private static IEnumerable<(string name, string value)> GetCoolapkCookies(Uri ur
 
 GetMD5(C#)：
 
-```
+```csharp
 static string GetMD5(string input)
-        {
-            using (var md5 = MD5.Create())
-            {
-                var r1 = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
-                var r2 = BitConverter.ToString(r1).ToLowerInvariant();
-                return r2.Replace("-", "");
-            }
-        }
+{
+    using (var md5 = MD5.Create())
+    {
+        var r1 = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+        var r2 = BitConverter.ToString(r1).ToLowerInvariant();
+        return r2.Replace("-", "");
+    }
+}
 ```
 
 ### X-App-Token
 
 生成方法(C#)：
 
-```
+```csharp
 static string GetCoolapkAppToken()
-        {
-            var t = Utils.ConvertDateTimeToUnixTimeStamp(DateTime.Now);
-            var hex_t = "0x" + Convert.ToString((int)t, 16);
-            // 时间戳加密
-            var md5_t = Utils.GetMD5($"{t}");
-            var a = $"token://com.coolapk.market/c67ef5943784d09750dcfbb31020f0ab?{md5_t}${guid}&com.coolapk.market";
-            var md5_a = Utils.GetMD5(Convert.ToBase64String(Encoding.UTF8.GetBytes(a)));
-            var token = md5_a + guid + hex_t;
-            return token;
-        }
+{
+    var t = Utils.ConvertDateTimeToUnixTimeStamp(DateTime.Now);
+    var hex_t = "0x" + Convert.ToString((int)t, 16);
+    // 时间戳加密
+    var md5_t = Utils.GetMD5($"{t}");
+    var a = $"token://com.coolapk.market/c67ef5943784d09750dcfbb31020f0ab?{md5_t}${guid}&com.coolapk.market";
+     var md5_a = Utils.GetMD5(Convert.ToBase64String(Encoding.UTF8.GetBytes(a)));
+    var token = md5_a + guid + hex_t;
+    return token;
+}
 ```
 
 ### X-App-Device
 
 生成方法(C#)：
 
-```
+```csharp
 static string GetCoolapkAppDevice()
-        {
-            string guid = Guid.NewGuid().ToString();
-            return Utils.GetMD5(guid);
-        }
+{
+    string guid = Guid.NewGuid().ToString();
+    return Utils.GetMD5(guid);
+}
 ```
 
 ***目前通过此算法生成的设备号可能已经被封禁了，所有使用此设备号发送的动态都会被强制进行人工审核***
@@ -123,7 +120,7 @@ static string GetCoolapkAppDevice()
 
 HTTP 首部示例：
 
-```
+```http
 GET /apk/com.coolapk.market HTTP/1.1
 Cookie: token=330eb921UsGtvFqgJ1jxZS6a5Jc_FFJd1qemZLe2qQnhiaO23IcDGjlB1pyTykGyZ_yA7DNpSCnQUcQw49tYgdT4HSfPkgEyR1F0VJyVqIjhBOcMmH722gU_PVoFINpZWCSjuXXLQlwb_t23uFlGi4_NzBS20mnv9Vyju_cQZpIsS5pG_TcqHduC2TY1e16vLf1qnhwraSDEXRZ-rh1HBc8kjDTNXg; username=wherewhere; uid=536381; SESSID=0576dbe9f539e72657286724daa1db2c126c2657
 X-Sdk-Locale: zh-CN
@@ -140,5 +137,3 @@ Host: www.coolapk.com
 Connection: Keep-Alive
 Cache-Control: no-cache
 ```
-
-[返回主页](https://wherewhere.github.io/Coolapk-API-Collect/ "返回主页")
