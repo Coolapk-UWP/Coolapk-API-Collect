@@ -34,7 +34,7 @@ jobs:
         run: sed -i 's/<base href="\/" \/>/<base href="\/Coolapk-API-Collect\/" \/>/g' public/index.html
 
       - name: Change README link
-        run: sed -i 's/\/Coolapk-API\//\//g' public/README.md
+        run: sed -i 's/Coolapk-API\///g' public/README.md
 
       - name: Add .nojekyll file
         run: touch public/.nojekyll

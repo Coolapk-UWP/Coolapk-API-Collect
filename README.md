@@ -21,9 +21,9 @@
 
 ## 内容
 - HTTP 首部
-  - [HTTP 首部](./Coolapk-API/HTTP%20首部/HTTP%20首部 "HTTP 首部")
+  - [HTTP 首部](Coolapk-API/HTTP%20首部/HTTP%20首部.md "HTTP 首部")
 - 主页
-  - [Tab 内容](./Coolapk-API/主页/Tab%20内容 "Tab 内容")
+  - [Tab 内容](Coolapk-API/主页/Tab%20内容.md "Tab 内容")
 
 ## 参与人员
 [![Contributors](https://contrib.rocks/image?repo=Coolapk-UWP/Coolapk-Lite)](https://github.com/Coolapk-UWP/Coolapk-Lite/graphs/contributors "Contributors")
