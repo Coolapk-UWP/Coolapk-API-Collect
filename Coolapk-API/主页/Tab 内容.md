@@ -1,10 +1,10 @@
-# 获取 Tab 内容
-
-*请求方式：POST*
-
-认证方式：Cookie
+# Tab 内容
 
 > https://api.coolapk.com/v6/main/init
+
+*请求方式：GET*
+
+认证方式：X-App-Token
 
 ## JSON 回复
 
@@ -14,7 +14,7 @@
 | - | - | - | - |
 | data | array | 信息本体 | |
 
-`data`数组：
+`data` 数组：
 
 | 项 | 类型 | 内容 | 备注 |
 | - | - | - | - |
@@ -26,7 +26,7 @@
 
 获取 Tab 内容
 
-```bash
+```powershell
 curl -G 'https://api.coolapk.com/v6/main/init'
 ```
 
