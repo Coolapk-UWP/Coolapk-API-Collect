@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="utf-8" />
@@ -24,19 +24,19 @@
   <script>
     window.$docsify = {
       auto2top: true,
-      basePath: './Coolapk-API/',
+      basePath: "./Coolapk-API/",
       executeScript: true,
-      homepage: '../README.md',
+      homepage: "../README.md",
       loadSidebar: true,
-      name: '酷安-API收集整理',
+      name: "酷安-API收集整理",
       nativeEmoji: true,
       search: {
         depth: 3,
-        noData: '找不到内容',
-        placeholder: '输入以搜索……'
+        noData: "找不到内容",
+        placeholder: "输入以搜索……"
       },
       darklightTheme: {
-        defaultTheme: 'dark',
+        defaultTheme: "light"
       }
     }
   </script>
@@ -52,6 +52,44 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-http.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-powershell.min.js"></script>
+
+  <!--  Fallback -->
+  <script>
+    if (typeof CSS === "undefined" || typeof CSS.supports === "undefined" || !CSS.supports("--a", 0)) {
+      function addScript(src) {
+        var script = document.createElement("script");
+        script.src = src;
+        var parentNode = document.head || document.scripts[0].parentNode;
+        parentNode.appendChild(script);
+        return script;
+      }
+      var script = addScript("https://cdn.jsdelivr.net/npm/css-vars-ponyfill");
+      script.onload = function () {
+        cssVars({
+          variables: {
+            "--siteFont": "PT Sans",
+            "--codeFontFamily": "Roboto Mono, Monaco, courier, monospace",
+            "--bodyFontSize": "17px",
+            "--accent": "#42b983",
+            "--theme-color": "#42b983",
+            "--toogleBackground": "#091a28",
+            "--background": "#ffffff",
+            "--textColor": "#34495e",
+            "--codeTextColor": "#525252",
+            "--codeBackgroundColor": "#f8f8f8",
+            "--borderColor": "rgba(0, 0, 0, 0.07)",
+            "--blockQuoteColor": "#858585",
+            "--highlightColor": "#d22778",
+            "--sidebarSublink": "#505d6b",
+            "--codeTypeColor": "#091a28",
+            "--coverBackground": "linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%)",
+            "--toogleImage": "url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/icons/moon.svg)"
+          },
+          watch: true
+        });
+      };
+    }
+  </script>
 </body>
 
 </html>
