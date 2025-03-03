@@ -6,6 +6,12 @@
 
 认证方式：X-App-Token
 
+## URL 参数：
+
+| 参数名 | 类型 | 内容 | 必要性 | 备注 |
+| - | - | - | - | - |
+| t | num | 当前时间 | 非必要 | 当前时间的 UNIX 时间戳 |
+
 ## JSON 回复
 
 根对象：
@@ -32,7 +38,8 @@ curl -G 'https://api.coolapk.com/v6/main/init'
 
 <details>
 <summary>查看响应示例：</summary>
-<pre v-pre data-lang="json"><code class="prismjs lang-json">
+
+```json
 {
   "data": [
     {
@@ -703,14 +710,6 @@ curl -G 'https://api.coolapk.com/v6/main/init'
     }
   ]
 }
-</code></pre>
-</details>
+```
 
-<script>
-  (() => {
-    const codes = document.getElementsByClassName('prismjs');
-    for (let i = 0; i < codes.length; i++) {
-      Prism.highlightElement(codes[i]);
-    }
-  })();
-</script>
+</details>
