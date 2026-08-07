@@ -21,6 +21,9 @@ jobs:
       - name: Copy index.html to publish folder
         run: cp index.html public
 
+      - name: Copy legacy.html to publish folder
+        run: cp legacy.html public
+
       - name: Copy logo to publish folder
         run: cp logo.png public
 
@@ -32,6 +35,9 @@ jobs:
 
       - name: Change index.html base-tag
         run: sed -i 's/<base href="\/" \/>/<base href="\/Coolapk-API-Collect\/" \/>/g' public/index.html
+
+      - name: Change legacy.html base-tag
+        run: sed -i 's/<base href="\/legacy\.html" \/>/<base href="\/Coolapk-API-Collect\/legacy\.html" \/>/g' public/legacy.html
 
       - name: Change README link
         run: sed -i 's/Coolapk-API\///g' public/README.md

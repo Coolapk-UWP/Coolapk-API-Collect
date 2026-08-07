@@ -17,6 +17,9 @@
   <div id="app">Loading...</div>
   <script>
     window.$docsify = {
+      alias: {
+        "/.*/_sidebar.md": "./_sidebar.md"
+      },
       auto2top: true,
       basePath: "./Coolapk-API/",
       executeScript: true,
@@ -24,6 +27,7 @@
       loadSidebar: true,
       name: "酷安-API收集整理",
       nativeEmoji: true,
+      repo: "Coolapk-UWP/Coolapk-API-Collect",
       markdown: {
         renderer: {
           image(token) {
@@ -37,6 +41,7 @@
 
   <!-- Docsify -->
   <script src="https://cdn.jsdelivr.net/npm/docsify"></script>
+  <script>if (!window.Docsify) location.href = "./legacy.html"; </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/dist/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
