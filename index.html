@@ -8,15 +8,9 @@
   <meta name="description" content="酷安-API收集整理【不断更新中....】">
   <base href="/" />
   <link rel="icon" type="image/png" sizes="360x360" href="logo.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/style.min.css"
-    title="docsify-darklight-theme" />
-  <style>
-    @media screen and (max-width: 768px) {
-      #docsify-darklight-theme {
-        left: auto;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/dist/themes/core.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/dist/themes/addons/core-dark.min.css"
+    media="(prefers-color-scheme: dark)" />
 </head>
 
 <body>
@@ -30,66 +24,28 @@
       loadSidebar: true,
       name: "酷安-API收集整理",
       nativeEmoji: true,
-      search: {
-        depth: 3,
-        noData: "找不到内容",
-        placeholder: "输入以搜索……"
-      },
-      darklightTheme: {
-        defaultTheme: "light"
+      markdown: {
+        renderer: {
+          image(token) {
+            const image = Object.getPrototypeOf(this).image.call(this, token);
+            return `${image.slice(0, image.length - 1)} loading="lazy">`;
+          }
+        }
       }
     }
   </script>
 
   <!-- Docsify -->
   <script src="https://cdn.jsdelivr.net/npm/docsify"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/dist/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/index.min.js"></script>
 
   <!-- Prism.JS -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-http.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-powershell.min.js"></script>
-
-  <!--  Fallback -->
-  <script>
-    if (typeof CSS === "undefined" || typeof CSS.supports === "undefined" || !CSS.supports("--a", 0)) {
-      function addScript(src) {
-        var script = document.createElement("script");
-        script.src = src;
-        var parentNode = document.head || document.scripts[0].parentNode;
-        parentNode.appendChild(script);
-        return script;
-      }
-      var script = addScript("https://cdn.jsdelivr.net/npm/css-vars-ponyfill");
-      script.onload = function () {
-        cssVars({
-          variables: {
-            "--siteFont": "PT Sans",
-            "--codeFontFamily": "Roboto Mono, Monaco, courier, monospace",
-            "--bodyFontSize": "17px",
-            "--accent": "#42b983",
-            "--theme-color": "#42b983",
-            "--toogleBackground": "#091a28",
-            "--background": "#ffffff",
-            "--textColor": "#34495e",
-            "--codeTextColor": "#525252",
-            "--codeBackgroundColor": "#f8f8f8",
-            "--borderColor": "rgba(0, 0, 0, 0.07)",
-            "--blockQuoteColor": "#858585",
-            "--highlightColor": "#d22778",
-            "--sidebarSublink": "#505d6b",
-            "--codeTypeColor": "#091a28",
-            "--coverBackground": "linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%)",
-            "--toogleImage": "url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/icons/moon.svg)"
-          },
-          watch: true
-        });
-      };
-    }
-  </script>
 </body>
 
 </html>
