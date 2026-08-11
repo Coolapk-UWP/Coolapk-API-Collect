@@ -6,15 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>酷安-API收集整理</title>
   <meta name="description" content="酷安-API收集整理【不断更新中....】">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#036ac4" media="(prefers-color-scheme: dark)">
   <base href="/" />
   <link rel="icon" type="image/png" sizes="360x360" href="logo.png">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/dist/themes/core.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/dist/themes/addons/core-dark.min.css"
     media="(prefers-color-scheme: dark)" />
-</head>
 
-<body>
-  <div id="app">Loading...</div>
+  <!-- Docsify -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify" onload="!window.Docsify && (location.href = './legacy.html')"
+    defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/dist/plugins/search.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js" defer></script>
+
+  <!-- Prism.JS -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-http.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-powershell.min.js" defer></script>
+
+  <!-- Config -->
   <script>
     window.$docsify = {
       alias: {
@@ -38,19 +53,10 @@
       }
     }
   </script>
+</head>
 
-  <!-- Docsify -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify"></script>
-  <script>if (!window.Docsify) location.href = "./legacy.html"; </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/dist/plugins/search.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-
-  <!-- Prism.JS -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-http.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-powershell.min.js"></script>
+<body>
+  <div id="app">Loading...</div>
 </body>
 
 </html>

@@ -8,6 +8,65 @@
   <meta name="description" content="酷安-API收集整理【不断更新中....】">
   <base href="/legacy.html" />
   <link rel="icon" type="image/png" sizes="360x360" href="logo.png">
+
+  <!-- Styles -->
+  <script>
+    if (typeof CSS === "undefined" || typeof CSS.supports === "undefined" || !CSS.supports("--a", 0)) {
+      function addScript(src) {
+        var script = document.createElement("script");
+        script.src = src;
+        var parentNode = document.head || document.scripts[0].parentNode;
+        parentNode.appendChild(script);
+        return script;
+      }
+      var script = addScript("https://cdn.jsdelivr.net/npm/css-vars-ponyfill");
+      script.onload = function () { cssVars({ watch: true }); };
+    }
+  </script>
+  <style>
+    :root {
+      --siteFont: PT Sans;
+      --codeFontFamily: Roboto Mono, Monaco, courier, monospace;
+      --bodyFontSize: 17px;
+      --accent: #42b983;
+      --theme-color: var(--accent);
+      --toogleBackground: #091a28;
+      --background: #ffffff;
+      --textColor: #34495e;
+      --codeTextColor: #525252;
+      --codeBackgroundColor: #f8f8f8;
+      --borderColor: rgba(0, 0, 0, 0.07);
+      --blockQuoteColor: #858585;
+      --highlightColor: #d22778;
+      --sidebarSublink: #505d6b;
+      --codeTypeColor: #091a28;
+      --coverBackground: linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%);
+      --toogleImage: url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme/icons/moon.svg);
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --toogleBackground: #ffffff;
+        --background: #091a28;
+        --textColor: #b4b4b4;
+        --codeTextColor: #ffffff;
+        --codeBackgroundColor: #0e2233;
+        --borderColor: #0d2538;
+        --sidebarSublink: #b4b4b4;
+        --codeTypeColor: #ffffff;
+        --toogleImage: url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme/icons/sun.svg);
+        color-scheme: dark;
+      }
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--textColor);
+      font-family: var(--siteFont), Helvetica Neue, Arial, sans-serif;
+      font-size: var(--bodyFontSize);
+    }
+  </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/style.min.css"
     title="docsify-darklight-theme" />
   <style>
@@ -17,10 +76,24 @@
       }
     }
   </style>
-</head>
 
-<body>
-  <div id="app">Loading...</div>
+  <!-- Polyfill -->
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=Element.prototype.classList"
+    defer></script>
+
+  <!-- Docsify -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/index.min.js" defer></script>
+
+  <!-- Prism.JS -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-http.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-powershell.min.js" defer></script>
+
+  <!-- Config -->
   <script>
     window.$docsify = {
       alias: {
@@ -51,56 +124,10 @@
       }
     }
   </script>
+</head>
 
-  <!-- Docsify -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/index.min.js"></script>
-
-  <!-- Prism.JS -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-http.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-powershell.min.js"></script>
-
-  <!--  Fallback -->
-  <script>
-    if (typeof CSS === "undefined" || typeof CSS.supports === "undefined" || !CSS.supports("--a", 0)) {
-      function addScript(src) {
-        var script = document.createElement("script");
-        script.src = src;
-        var parentNode = document.head || document.scripts[0].parentNode;
-        parentNode.appendChild(script);
-        return script;
-      }
-      var script = addScript("https://cdn.jsdelivr.net/npm/css-vars-ponyfill");
-      script.onload = function () {
-        cssVars({
-          variables: {
-            "--siteFont": "PT Sans",
-            "--codeFontFamily": "Roboto Mono, Monaco, courier, monospace",
-            "--bodyFontSize": "17px",
-            "--accent": "#42b983",
-            "--theme-color": "#42b983",
-            "--toogleBackground": "#091a28",
-            "--background": "#ffffff",
-            "--textColor": "#34495e",
-            "--codeTextColor": "#525252",
-            "--codeBackgroundColor": "#f8f8f8",
-            "--borderColor": "rgba(0, 0, 0, 0.07)",
-            "--blockQuoteColor": "#858585",
-            "--highlightColor": "#d22778",
-            "--sidebarSublink": "#505d6b",
-            "--codeTypeColor": "#091a28",
-            "--coverBackground": "linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%)",
-            "--toogleImage": "url(https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/icons/moon.svg)"
-          },
-          watch: true
-        });
-      };
-    }
-  </script>
+<body>
+  <div id="app">Loading...</div>
 </body>
 
 </html>
